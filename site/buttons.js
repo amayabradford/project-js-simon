@@ -31,7 +31,7 @@ function flashGreen() {
   greenButton.classList.add('highlight1');
   setTimeout(function(){
       greenButton.classList.remove('highlight1');
-  }, 200);
+  }, 300);
   let sound = green.cloneNode();
   sound.play();
 }
@@ -40,7 +40,7 @@ function flashRed() {
   redButton.classList.add('highlight2');
   setTimeout(function(){
       redButton.classList.remove('highlight2');
-  }, 200)
+  }, 300)
   let sound = red.cloneNode();
   sound.play();
 }
@@ -49,7 +49,7 @@ function flashYellow() {
   yellowButton.classList.add('highlight3');
   setTimeout(function(){
       yellowButton.classList.remove('highlight3');
-  }, 200)
+  }, 300)
   let sound = yellow.cloneNode();
   sound.play();
 }
@@ -58,7 +58,7 @@ function flashBlue() {
   blueButton.classList.add('highlight4');
   setTimeout(function(){
       blueButton.classList.remove('highlight4');
-  }, 200)
+  }, 300)
   let sound = blue.cloneNode();
   sound.play();
 }

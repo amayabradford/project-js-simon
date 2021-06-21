@@ -88,11 +88,17 @@ body{
 
 .order{
   text-align: center;
+  color: white;
 }
 
+.playerturn{
+  text-align: center;
+  font-family: 'Seaweed Script', cursive;
+}
 .result{
   text-align: center;
   font-family: 'Seaweed Script', cursive;
+  color: white;
 }
 .restart{
   text-align: center;
@@ -124,6 +130,7 @@ body{
 .clicks{
   text-align: center;
   font-family: 'Seaweed Script', cursive;
+  color: white;
 }
 
 .reset{
@@ -140,4 +147,9 @@ body{
 
 .unclickable{
   pointer-events: none;
+}
+
+.playerturn{
+  color: white;
+  font-family: 'Seaweed Script', cursive;
 }

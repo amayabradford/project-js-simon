@@ -5,10 +5,26 @@ bigBox = document.querySelector('.simon-container');
 start = document.querySelector('.start');
 orderSentence = document.querySelector('.order');
 startAgain = document.querySelector('.restart');
+playerPlay = document.querySelector('.playerturn');
 
 let listOriginal = ['green','red','yellow','blue'];
 let listPlayer = [];
 let listColor = [];
+let level = 1;
+
+function playerTurn(){
+    bigBox.classList.remove('unclickable');
+}
+
+function noClick(){
+    bigBox.classList.add('unclickable');
+}
+noClick();
+
+function showPlayerTurn(){
+    playerPlay.innerHTML = `Your turn!`;
+    
+}
 
 function createColor(){   //v7
     randomColor = listOriginal[Math.floor(Math.random()* listOriginal.length)]
@@ -23,8 +39,7 @@ function startGame(){
     start.classList.add('hidden');
     orderSentence.classList.remove('hidden');
     listColor.push(createColor());
-    document.querySelector('#colors').innerHTML = listColor;
-    document.querySelector('.result').innerHTML = `Round 1!`;
+    document.querySelector('#colors').innerHTML = level;
     bigBox.classList.remove('unclickable');
     remainClicks();
 }
@@ -39,6 +54,36 @@ function resetGame(){
     document.querySelector('.clicks').innerHTML = "";
 }
 
+function pressOneColor(color){
+    if(color === "green"){
+        flashGreen();
+    }
+    else if(color === "red"){
+        flashRed();
+    }
+    else if(color === "yellow"){
+        flashYellow();
+    }
+    else{
+        flashBlue();
+    }
+}
+
+let j = 0;
+function pressColor(){
+    pressOneColor(listColor[j]);
+    if(++j < listColor.length){
+        setTimeout(pressColor, 2000);
+    }
+}
+
+function pushAndPress(){
+    j=0;
+    setTimeout(pressColor, 3500);
+    setTimeout(function(){playerPlay.innerHTML = `Computer's Turn`},2000);
+}
+
+
 function bigCompare(tile){
     listPlayer.push(tile);
 
@@ -48,11 +93,14 @@ function bigCompare(tile){
             remainClicks();
             if(listPlayer.length === listColor.length){
                 if(listPlayer[listPlayer.length - 1] === listColor[listColor.length - 1]){
+                    level = level + 1;
+                    setTimeout(function(){document.querySelector('#colors').innerHTML = level}, 2000);
                     listPlayer = []
-                    document.querySelector('.result').innerHTML = `Congrats! Round ${i+2}!`;
+                    document.querySelector('.result').innerHTML = `Congrats! Next round!`;
                     listColor.push(createColor());
-                    document.querySelector('#colors').innerHTML = listColor;
                     remainClicks();
+                    pushAndPress();
+                    setTimeout(showPlayerTurn, level*2000 + 3000);
                 }
                 else{
                     document.querySelector('.result').innerHTML = 'Wrong tile!';
@@ -74,6 +122,9 @@ function bigCompare(tile){
 
 start.addEventListener('click', function(){
     startGame();
+    setTimeout(pressColor, 3000);
+    playerPlay.innerHTML = `Computer's Turn`
+    setTimeout(showPlayerTurn, level*2000 + 3000);
 })
 
 bigBox.addEventListener('click', function(event){
