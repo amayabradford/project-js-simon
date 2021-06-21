@@ -1,3 +1,8 @@
+let green = new Audio("soap-bubble.wav");
+let red = new Audio("deep-bubble.wav");
+let yellow = new Audio("liquid-bubble.wav");
+let blue = new Audio("egg-bubble.wav");
+
 let greenButton = document.querySelector('.simon-button.green');
 greenButton.addEventListener('click', function(event) {
   flashGreen();
@@ -27,6 +32,8 @@ function flashGreen() {
   setTimeout(function(){
       greenButton.classList.remove('highlight1');
   }, 200);
+  let sound = green.cloneNode();
+  sound.play();
 }
 
 function flashRed() {
@@ -34,6 +41,8 @@ function flashRed() {
   setTimeout(function(){
       redButton.classList.remove('highlight2');
   }, 200)
+  let sound = red.cloneNode();
+  sound.play();
 }
 
 function flashYellow() {
@@ -41,6 +50,8 @@ function flashYellow() {
   setTimeout(function(){
       yellowButton.classList.remove('highlight3');
   }, 200)
+  let sound = yellow.cloneNode();
+  sound.play();
 }
 
 function flashBlue() {
@@ -48,4 +59,6 @@ function flashBlue() {
   setTimeout(function(){
       blueButton.classList.remove('highlight4');
   }, 200)
+  let sound = blue.cloneNode();
+  sound.play();
 }
