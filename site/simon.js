@@ -23,7 +23,7 @@ noClick();
 
 function showPlayerTurn(){
     playerPlay.innerHTML = `Your turn!`;
-    
+
 }
 
 function createColor(){   //v7
@@ -73,14 +73,14 @@ let j = 0;
 function pressColor(){
     pressOneColor(listColor[j]);
     if(++j < listColor.length){
-        setTimeout(pressColor, 2000);
+        setTimeout(pressColor, 1500);
     }
 }
 
 function pushAndPress(){
     j=0;
     setTimeout(pressColor, 3500);
-    setTimeout(function(){playerPlay.innerHTML = `Computer's Turn`},2000);
+    setTimeout(function(){playerPlay.innerHTML = `Computer's Turn`},1500);
 }
 
 
@@ -94,7 +94,7 @@ function bigCompare(tile){
             if(listPlayer.length === listColor.length){
                 if(listPlayer[listPlayer.length - 1] === listColor[listColor.length - 1]){
                     level = level + 1;
-                    setTimeout(function(){document.querySelector('#colors').innerHTML = level}, 2000);
+                    setTimeout(function(){document.querySelector('#colors').innerHTML = level}, 1500);
                     listPlayer = []
                     document.querySelector('.result').innerHTML = `Congrats! Next round!`;
                     listColor.push(createColor());
@@ -108,7 +108,7 @@ function bigCompare(tile){
                     bigBox.classList.add('unclickable');
                     return;
                 }
-                
+
             }
         }
         else{
