@@ -100,7 +100,7 @@ function bigCompare(tile){
                     listColor.push(createColor());
                     remainClicks();
                     pushAndPress();
-                    setTimeout(showPlayerTurn, level*2000 + 3000);
+                    setTimeout(showPlayerTurn, level*2000 + 2000);
                 }
                 else{
                     document.querySelector('.result').innerHTML = 'Wrong tile!';
